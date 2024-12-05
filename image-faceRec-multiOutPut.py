@@ -11,9 +11,6 @@ def encode_images(image_files):
     return encodings
 
 # Encode multiple images for each known person
-modi_images = ['samples/modi.jpg']
-modi_encodings = encode_images(modi_images)
-
 trump_images = ['samples/trump.jpg']
 trump_encodings = encode_images(trump_images)
 
@@ -23,13 +20,14 @@ erandi_encodings = encode_images(erandi_images)
 sunimal_images = ['samples/sunimal.jpg']
 sunimal_encodings = encode_images(sunimal_images)
 
-steve_images = ['samples/steve.jpg','samples/steve1.jpg','samples/steve2.jpg','samples/steve3.jpg','samples/steve4.jpg','samples/steve5.jpg']
+steve_images = ['samples/steve.jpg','samples/steve1.jpg','samples/steve2.jpg','samples/steve3.jpg',
+'samples/steve4.jpg','samples/steve5.jpg','samples/steve6.webp','samples/steve6.jpg'
+,'samples/steve7.jpg','samples/steve8.jpg','samples/steve9.jpg','samples/steve10.jpg','samples/steve11.jpg','samples/steve12.jpg']
 steve_encodings = encode_images(steve_images)
 
 # Combine all encodings and names
-known_face_encodings = modi_encodings + trump_encodings + erandi_encodings + sunimal_encodings
+known_face_encodings = trump_encodings + erandi_encodings + sunimal_encodings + steve_encodings
 known_face_names = (
-    ["modi"] * len(modi_encodings) +
     ["trump"] * len(trump_encodings) +
     ["erandi"] * len(erandi_encodings) +
     ["sunimal"] * len(sunimal_encodings) +
@@ -37,12 +35,9 @@ known_face_names = (
 )
 
 # Test images
-#'testImages/test1.jpg'
-# 'testImages/test4.jpg'
 test_images = ['testImages/test.jpg','testImages/test1.jpg', 'testImages/test2.jpg', 'testImages/test3.jpg','testImages/test4.webp','testImages/test4.jpg']
 
 # Annotate and process all test images
-annotated_images = []
 for test_image_path in test_images:
     # Load test image
     image_to_recognize = face_recognition.load_image_file(test_image_path)
